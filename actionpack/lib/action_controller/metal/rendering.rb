@@ -6,6 +6,7 @@ module ActionController
 
     # Before processing, set the request formats in current controller formats.
     def process_action(*) #:nodoc:
+      require 'byebug'; byebug
       self.formats = request.formats.map { |x| x.ref }
       super
     end
