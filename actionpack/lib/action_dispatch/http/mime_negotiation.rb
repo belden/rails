@@ -36,10 +36,10 @@ module ActionDispatch
             accepts = fallback
           else
             require 'byebug'; byebug
-            accepts = Mime::Type.parse(header)
-            if !accepts.symbol && accepts.ref != "*/*"
-              accepts = fallback
+            accepts = Mime::Type.parse(header).select do |format|
+              format.symbol || format.ref == "*/*"
             end
+            accepts ||= fallback
           end
           accepts
         end
