@@ -244,7 +244,6 @@ module ActionView
       if formats.size == 1
         yield
       else
-        require 'byebug'; byebug
         old_formats = formats
         _set_detail(:formats, formats[0,1])
 
