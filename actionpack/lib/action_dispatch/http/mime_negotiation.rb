@@ -50,6 +50,9 @@ module ActionDispatch
       end
 
       def formats
+        if !@env['action_dispatch.request.formats']
+          require 'byebug'; byebug
+        end
         @env["action_dispatch.request.formats"] ||=
           if parameters[:format]
             Array(Mime[parameters[:format]])
